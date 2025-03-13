@@ -29,10 +29,10 @@ class PMCS_Order_Item_Meta {
 		if ( $checkout_currency != $currency ) {
 			?>
 			<tr>
-				<td class="label"><?php printf( __( 'Discount(%1$s):', 'pmcs' ), $checkout_currency ); ?></td>
+				<td class="label"><?php printf( __( 'Discount(%1$s):', 'pmcs' ), $checkout_currency ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped  ?></td>
 				<td width="1%"></td>
 				<td class="total">
-					<?php echo wc_price( $order->get_meta( '_cart_discount_converted' ), array( 'currency' => $checkout_currency ) ); // WPCS: XSS ok. ?>
+					<?php echo wc_price( $order->get_meta( '_cart_discount_converted' ), array( 'currency' => $checkout_currency ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped  ?>
 				</td>
 			</tr>
 			<?php
@@ -49,10 +49,10 @@ class PMCS_Order_Item_Meta {
 		if ( $checkout_currency != $currency ) {
 			?>
 			<tr>
-				<td class="label"><?php printf( __( 'Shipping(%1$s):', 'pmcs' ), $checkout_currency ); ?></td>
+				<td class="label"><?php printf( __( 'Shipping(%1$s):', 'pmcs' ), $checkout_currency ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped  ?></td>
 				<td width="1%"></td>
 				<td class="total">
-					<?php echo wc_price( $order->get_meta( '_cart_discount_converted' ), array( 'currency' => $checkout_currency ) ); // WPCS: XSS ok. ?>
+					<?php echo wc_price( $order->get_meta( '_cart_discount_converted' ), array( 'currency' => $checkout_currency ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</td>
 			</tr>
 			<?php

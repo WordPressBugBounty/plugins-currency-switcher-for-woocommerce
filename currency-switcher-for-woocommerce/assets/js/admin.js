@@ -190,6 +190,7 @@ jQuery(document).ready(function($) {
 		flagImg.attr("src", imageUrl);
 
 		$("input.pmcs-currency-display", p).val(displayName);
+		$(".currency_code_display", p).text(v);
 	});
 
 	// For sync all rates

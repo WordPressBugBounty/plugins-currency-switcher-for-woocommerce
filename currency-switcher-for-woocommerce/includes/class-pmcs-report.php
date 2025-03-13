@@ -67,13 +67,17 @@ class PMCS_Report {
 			$_report_data = $this->get_sales_report_data();
 			?>
 			<li class="sales-this-month pmcs-report-li pmcs-currency-<?php echo esc_attr( $code ); ?>">
-			<a href="<?php echo admin_url( 'admin.php?page=wc-reports&tab=orders&range=month&currency=' . $code ); ?>">
-				<?php echo $reports->sales_sparkline( '', max( 7, date( 'd', current_time( 'timestamp' ) ) ) ); ?>
+			<a href="<?php echo esc_url(admin_url( 'admin.php?page=wc-reports&tab=orders&range=month&currency=' . $code )); ?>">
+				<?php 
+				// @codingStandardsIgnoreStart
+				echo $reports->sales_sparkline( '', max( 7, date( 'd', current_time( 'timestamp' ) ) ) );
+				// @codingStandardsIgnoreEnd
+				?>
 				<?php
 					/* translators: %s: net sales */
-					printf(
-						__( '%s net sales this month', 'woocommerce' ),
-						'<strong>' . wc_price( $_report_data->net_sales ) . '</strong>'
+					printf( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						__( '%s net sales this month', 'pmcs' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped	
+						'<strong>' . wc_price( $_report_data->net_sales ) . '</strong>' // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					);
 				?>
 				</a>
@@ -99,7 +103,7 @@ class PMCS_Report {
 		$names = get_woocommerce_currencies();
 		?>
 		<span class="nav-tab-- pmsc-report-tab">
-			<span class="label"><?php printf( __( 'Reporting in %s', 'pmcs' ), $names[ $this->currency ] ); ?></span>
+			<span class="label"><?php printf( __( 'Reporting in %s', 'pmcs' ), $names[ $this->currency ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped	 ?></span>
 			<ul>
 			<?php
 			foreach ( $this->order_currency_codes as $code ) {

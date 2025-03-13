@@ -4,14 +4,14 @@
  * Plugin Name: Currency Switcher for WooCommerce 
  * Plugin URI:  #
  * Description: Currency Switcher for WooCommerce.
- * Version:     0.0.7
+ * Version:     0.0.8
  * Author:      PressMaximum
  * Author URI:  http://pressmaximum.com/
  * Text Domain: pmcs
  * Domain Path: /languages
  * License:     GPL-2.0+
  * WC requires at least: 5.0
- * WC tested up to: 5.9.3
+ * WC tested up to: 9.7.1
  * Requires at least: 5.1
  * Requires PHP: 7.0
  */
@@ -76,7 +76,7 @@ if (!function_exists('pmcs_activation_redirect')) {
 	function pmcs_activation_redirect($plugin)
 	{
 		if (plugin_basename(__FILE__) == $plugin) {
-			exit(wp_redirect(admin_url('admin.php?page=pm_currency_switcher')));
+			exit(wp_redirect(admin_url('admin.php?page=pm_currency_switcher'))); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 		}
 	}
 }

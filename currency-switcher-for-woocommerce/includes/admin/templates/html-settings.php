@@ -9,7 +9,7 @@
 
 ?>
 <div class="wrap">
-	<h1><?php _e( 'Currency Switcher for WooCommerce', 'pmcs' ); ?></h1>
+	<h1><?php esc_html_e( 'Currency Switcher for WooCommerce', 'pmcs' ); ?></h1>
 	<nav class="nav-tab-wrapper woo-nav-tab-wrapper">
 	<?php
 	$admin_url = admin_url( 'admin.php?page=pm_currency_switcher' );
@@ -38,7 +38,7 @@
 			if ( isset( $_POST['save'] ) ) {
 				?>
 				<div class="notice notice-success is-dismissible">
-					<p><?php _e( 'Your settings have been saved.', 'pmcs' ); ?></p>
+					<p><?php esc_html_e( 'Your settings have been saved.', 'pmcs' ); ?></p>
 				</div>
 				<?php
 			}

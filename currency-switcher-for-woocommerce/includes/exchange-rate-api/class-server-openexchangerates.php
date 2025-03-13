@@ -29,7 +29,7 @@ class PMSC_Server_Openexchangerates extends PMCS_Exchange_Server_Abstract {
 		if ( ! get_option( 'pmcs_openexchangerates_app_id' ) ) {
 			?>
 		<div class="notice notice-warning is-dismissible">
-			<p><?php _e( 'Please enter your app id', 'pmcs' ); ?></p>
+			<p><?php esc_html_e( 'Please enter your app id', 'pmcs' ); ?></p>
 		</div>
 			<?php
 		}

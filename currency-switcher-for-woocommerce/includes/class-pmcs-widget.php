@@ -20,7 +20,7 @@ class PMCS_Widget extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		echo pmcs()->shortcode->init( $instance, $args ); // WPCS: XSS ok.
+		echo pmcs()->shortcode->init( $instance, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped	
 	}
 
 	/**
@@ -35,24 +35,24 @@ class PMCS_Widget extends WP_Widget {
 		$show_name    = ! empty( $instance['show_name'] ) ? $instance['show_name'] : '';
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'pmcs' ); ?></label> 
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'pmcs' ); ?></label> 
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'display_type' ) ); ?>"><?php esc_attr_e( 'Display type:', 'pmcs' ); ?></label> 
+			<label for="<?php echo esc_attr( $this->get_field_id( 'display_type' ) ); ?>"><?php esc_html_e( 'Display type:', 'pmcs' ); ?></label> 
 			<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'display_type' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'display_type' ) ); ?>">
-				<option <?php selected( $show_name, 'list' ); ?> value="list"><?php _e( 'List', 'pmcs' ); ?></option>
-				<option <?php selected( $show_name, 'dropdown' ); ?> value="dropdown"><?php _e( 'Dropdown', 'pmcs' ); ?></option>
+				<option <?php selected( $show_name, 'list' ); ?> value="list"><?php esc_html_e( 'List', 'pmcs' ); ?></option>
+				<option <?php selected( $show_name, 'dropdown' ); ?> value="dropdown"><?php esc_html_e( 'Dropdown', 'pmcs' ); ?></option>
 			</select>
 		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'show_flag' ) ); ?>"><input id="<?php echo esc_attr( $this->get_field_id( 'show_flag' ) ); ?>" <?php checked( $show_flag, 1 ); ?> name="<?php echo esc_attr( $this->get_field_name( 'show_flag' ) ); ?>" type="checkbox" value="1"> <?php esc_attr_e( 'Show currency flags', 'pmcs' ); ?></label> 
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'show_name' ) ); ?>"><?php esc_attr_e( 'Display name:', 'pmcs' ); ?></label> 
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_name' ) ); ?>"><?php esc_html_e( 'Display name:', 'pmcs' ); ?></label> 
 			<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'show_name' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_name' ) ); ?>">
-				<option <?php selected( $show_name, 'name' ); ?> value="name"><?php _e( 'Currency name', 'pmcs' ); ?></option>
-				<option <?php selected( $show_name, 'code' ); ?> value="code"><?php _e( 'Currency code', 'pmcs' ); ?></option>
+				<option <?php selected( $show_name, 'name' ); ?> value="name"><?php esc_html_e( 'Currency name', 'pmcs' ); ?></option>
+				<option <?php selected( $show_name, 'code' ); ?> value="code"><?php esc_html_e( 'Currency code', 'pmcs' ); ?></option>
 			</select>
 		</p>
 		<?php

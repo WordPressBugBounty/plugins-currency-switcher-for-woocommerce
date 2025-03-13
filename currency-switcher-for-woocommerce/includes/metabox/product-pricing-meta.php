@@ -9,10 +9,10 @@ function pmcs_product_pricing_list() {
 	?>
 	<div class="pmcs-price-wrapper">
 		<p class="form-field pmcs-price-field _pmcs_price_heading">
-			<label><?php _e( 'Advanced price', 'pmcs' ); ?></label>
+			<label><?php esc_html_e( 'Advanced price', 'pmcs' ); ?></label>
 			<span class="wrap">
-				<span class="label"><?php _e( 'Regular price', 'pmcs' ); ?></span>
-				<span class="label"><?php _e( 'Sale price', 'pmcs' ); ?></span>
+				<span class="label"><?php esc_html_e( 'Regular price', 'pmcs' ); ?></span>
+				<span class="label"><?php esc_html_e( 'Sale price', 'pmcs' ); ?></span>
 			</span>
 		</p>
 		<?php
@@ -26,12 +26,12 @@ function pmcs_product_pricing_list() {
 
 			?>
 			<p class="form-field pmcs-price-field _pmcs_price_<?php echo esc_attr( $code ); ?>">
-				<label><?php printf( $title, $symbol ); ?></label>
+				<label><?php printf( $title, $symbol ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
 				<span class="wrap">
 					<input placeholder="<?php esc_attr_e( 'Regular price', 'pmcs' ); ?>" class="input-text wc_input_decimal" size="6" type="text" name="_regular_price_<?php echo esc_attr( $code ); ?>" value="<?php echo esc_attr( $price ); ?>">
 					<input placeholder="<?php esc_attr_e( 'Sale price', 'pmcs' ); ?>" 	 class="input-text wc_input_decimal last" size="6" type="text" name="_sale_price_<?php echo esc_attr( $code ); ?>" value="<?php echo esc_attr( $sale ); ?>">
 				</span>
-				<?php echo wc_help_tip( $tip ); ?>
+				<?php echo wc_help_tip( $tip ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</p>
 			<?php
 		}
@@ -64,7 +64,7 @@ function pmcs_woocommerce_variation_options_pricing( $loop, $variation_data, $va
 	$id = $variation->ID;
 	?>
 	<p class="p-variable form-row form-row-full">
-		<a href="#" class="pmcs-show-price-variable"><?php _e( 'More price for currencies', 'pmcs' ); ?></a>
+		<a href="#" class="pmcs-show-price-variable"><?php esc_html_e( 'More price for currencies', 'pmcs' ); ?></a>
 	</p>
 	<div class="pmcs-price-variable-wrapper" style="display: none;">
 		<?php
@@ -77,11 +77,11 @@ function pmcs_woocommerce_variation_options_pricing( $loop, $variation_data, $va
 			// echo wc_help_tip( $tip );
 			?>
 			<p class="pmcs-variable-price-field form-field variable_regular_price_<?php echo esc_attr( $code ); ?>_field form-row form-row-first">
-				<label><?php printf( __( 'Regular price (%s)', 'pmcs' ), $symbol ); ?></label>
-				<input type="text" class="short" name="variable_regular_price_<?php echo esc_attr( $code ) . '[' . $loop . ']'; ?>" value="<?php echo esc_attr( $price ); ?>" placeholder=""> 
+				<label><?php printf( __( 'Regular price (%s)', 'pmcs' ), $symbol ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
+				<input type="text" class="short" name="variable_regular_price_<?php echo esc_attr( $code ) . '[' . esc_attr($loop) . ']'; ?>" value="<?php echo esc_attr( $price ); ?>" placeholder=""> 
 			</p>
 			<p class="pmcs-variable-price-field form-field variable_sale_price_<?php echo esc_attr( $code ); ?>_field form-row form-row-last">
-				<label><?php printf( __( 'Sale price (%s)', 'pmcs' ), $symbol ); ?></label><input type="text" class="short" style="" name="variable_sale_price_<?php echo esc_attr( $code ) . '[' . $loop . ']'; ?>" value="<?php echo esc_attr( $sale ); ?>" placeholder=""> 
+				<label><?php printf( __( 'Sale price (%s)', 'pmcs' ), $symbol ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label><input type="text" class="short" style="" name="variable_sale_price_<?php echo esc_attr( $code ) . '[' . $loop . ']'; ?>" value="<?php echo esc_attr( $sale ); ?>" placeholder=""> 
 			</p>
 			<?php
 		}

@@ -349,7 +349,7 @@ class PMCS_Switcher {
 
 		$save = true;
 		if ( isset( $_GET['currency'] ) ) {
-			$this->current_currency = sanitize_text_field( wp_unslash( $_GET['currency'] ) );
+			$this->current_currency = strtoupper(sanitize_text_field( wp_unslash( $_GET['currency'] ) ));
 			$save = true;
 		} else {
 			switch ( $this->store_type ) {

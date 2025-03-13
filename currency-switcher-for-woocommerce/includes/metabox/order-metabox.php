@@ -136,7 +136,7 @@ class PMCS_Order_Metabox {
 			}
 			?>
 			<?php foreach ( (array) $list as $code => $currency ) { ?>
-			<option <?php echo selected( $value, $code ); ?> value="<?php echo esc_attr( $code ); ?>"><?php echo $code . ' - ' . esc_attr( $currency['display_text'] ); ?></option>
+			<option <?php echo selected( $value, $code ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped  ?> value="<?php echo esc_attr( $code ); ?>"><?php echo $code . ' - ' . esc_attr( $currency['display_text'] ); ?></option>
 			<?php } ?>
 		</select>
 		<?php

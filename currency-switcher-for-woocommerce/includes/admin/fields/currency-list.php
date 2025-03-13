@@ -122,12 +122,15 @@ class WC_PMCS_Currency_Field
 			<th class="td td_currency_default" width="25px">
 				<input class="pmcs_default_currency" type="radio" <?php echo ($is_default) ? ' checked="checked" ' : ''; ?> name="pmcs_default_currency" value="<?php echo esc_attr($value['currency_code']); ?>">
 			</th>
+			<td class="td currency_code_display">
+				<?php echo esc_html($value['currency_code']); ?>
+			</td>
 			<td class="td td_currency_code">
 				<select data-name="__name__[__i__][currency_code]" style="width:250px" placeholder="<?php esc_attr_e('Select currency', 'pmcs'); ?>" class="pmcs-currency-select riname wc-enhanced-select">
 					<?php
 					if (!empty($this->list_currency)) {
 						foreach ($this->list_currency as $key => $val) {
-							echo '<option value="' . esc_attr($key) . '"' . wc_selected($key, $value['currency_code']) . '>' . esc_html($val) . '</option>'; // WPCS: XSS ok.
+							echo '<option value="' . esc_attr($key) . '"' . wc_selected($key, $value['currency_code']) . '>' . esc_html($val) . '</option>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped	
 						}
 					}
 					?>
@@ -135,10 +138,10 @@ class WC_PMCS_Currency_Field
 			</td>
 			<td class="td currency_position">
 				<select class="riname" data-name="__name__[__i__][sign_position]"">
-					<option <?php echo wc_selected('left', $value['sign_position']); ?> value=" left"><?php _e('Left'); ?></option>
-					<option <?php echo wc_selected('right', $value['sign_position']); ?> value="right"><?php _e('Right'); ?></option>
-					<option <?php echo wc_selected('left_space', $value['sign_position']); ?> value="left_space"><?php _e('Left with space'); ?></option>
-					<option <?php echo wc_selected('right_space', $value['sign_position']); ?> value="right_space"><?php _e('Right with space'); ?></option>
+					<option <?php echo wc_selected('left', $value['sign_position']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> value=" left"><?php esc_html_e('Left', 'pmcs'); ?></option>
+					<option <?php echo wc_selected('right', $value['sign_position']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> value="right"><?php esc_html_e('Right', 'pmcs'); ?></option>
+					<option <?php echo wc_selected('left_space', $value['sign_position']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> value="left_space"><?php esc_html_e('Left with space', 'pmcs'); ?></option>
+					<option <?php echo wc_selected('right_space', $value['sign_position']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> value="right_space"><?php esc_html_e('Right with space', 'pmcs'); ?></option>
 				</select>
 			</td>
 			<td class="td num_seperator">
@@ -156,7 +159,7 @@ class WC_PMCS_Currency_Field
 			<td class="td display_name">
 				<input type="text" class="pmcs-currency-display riname" data-name="__name__[__i__][display_text]" placeholder="<?php esc_attr_e('Custom display name', 'pmcs'); ?>" value="<?php echo esc_attr($value['display_text']); ?>">
 			</td>
-			<td class="td currency_flag"><img src="<?php echo $flag; // WPCS: XSS ok. 
+			<td class="td currency_flag"><img src="<?php echo $flag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 													?>" data-url="<?php echo esc_url($this->get_flag_folder()); ?>" alt="" /></td>
 			<td class="td actions">
 				<span class="pmcs-button secondary pmcs-sync-rate"><span class="dashicons dashicons-update"></span></span>
@@ -205,14 +208,15 @@ class WC_PMCS_Currency_Field
 				<table class="pmcs-table-lm pmcs-currencies-list wp-list-table widefat">
 					<thead class="thead">
 						<tr class="tr">
-							<th class="td td_currency_default" width="25px"><?php _e('Default', 'pmcs'); ?></th>
-							<th class="td td_currency_code" width="*"><?php _e('Currency', 'pmcs'); ?></th>
-							<th class="td currency_position"><?php echo wc_help_tip('Currency Position'); ?></th>
-							<th class="td num_seperator"><?php echo wc_help_tip('Thousand seperator', 'pmcs'); ?></th>
-							<th class="td num_seperator"><?php echo wc_help_tip('Decimal seperator', 'pmcs'); ?></th>
-							<th class="td num_seperator"><?php echo wc_help_tip('Number of decimals', 'pmcs'); ?></th>
-							<th class="td rate"><?php _e('Rate', 'pmcs'); ?></th>
-							<th class="td display_name"><?php _e('Display name', 'pmcs'); ?></th>
+							<th class="td td_currency_default" width="25px"><?php esc_html_e('Default', 'pmcs'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
+							<th class="td currency_code_display" width="*"><?php esc_html_e('Code', 'pmcs');  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
+							<th class="td td_currency_code" width="*"><?php esc_html_e('Currency', 'pmcs');// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped  ?></th>
+							<th class="td currency_position"><?php echo wc_help_tip('Currency Position'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
+							<th class="td num_seperator"><?php echo wc_help_tip('Thousand seperator', 'pmcs'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
+							<th class="td num_seperator"><?php echo wc_help_tip('Decimal seperator', 'pmcs'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
+							<th class="td num_seperator"><?php echo wc_help_tip('Number of decimals', 'pmcs'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
+							<th class="td rate"><?php esc_html_e('Rate', 'pmcs'); ?></th>
+							<th class="td display_name"><?php esc_html_e('Display name', 'pmcs'); ?></th>
 							<th class="td currency_flag">&nbsp;</th>
 							<th class="td actions">&nbsp;</th>
 						</tr>
@@ -235,8 +239,8 @@ class WC_PMCS_Currency_Field
 					<p class="pmcs-limit-currency-msg" style="display:none;">
 						<?php
 						printf(
-							__('By default Currency Swicther support 2 currencies only. Please update to %s to add more currencies.', 'pmcs'),
-							'<a href="' . PMCS_PRO_URL . '">' . __('Pro version', 'pmcs') . '</a>'
+							__('By default Currency Swicther support 2 currencies only. Please update to %s to add more currencies.', 'pmcs'), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							'<a href="' . PMCS_PRO_URL . '">' . esc_html__('Pro version', 'pmcs') . '</a>' // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						);
 						?>
 					</p>
@@ -245,8 +249,8 @@ class WC_PMCS_Currency_Field
 				?>
 
 
-				<button class="button secondary pmcs-add-currency-list" type="button"><?php _e('Add new currency', 'pmcs'); ?></button>
-				<button class="button secondary pmcs-currency-sync-all" type="button"><?php _e('Sync all currency rates', 'pmcs'); ?></button>
+				<button class="button secondary pmcs-add-currency-list" type="button"><?php esc_html_e('Add new currency', 'pmcs'); ?></button>
+				<button class="button secondary pmcs-currency-sync-all" type="button"><?php esc_html_e('Sync all currency rates', 'pmcs'); ?></button>
 			</td>
 		</tr>
 <?php

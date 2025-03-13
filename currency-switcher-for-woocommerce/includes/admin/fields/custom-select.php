@@ -43,12 +43,12 @@ class WC_PMCS_Custom_Select_Field {
 		?>
 		<tr valign="top">
 			<th scope="row" class="titledesc">
-				<label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
+				<label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?> <?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped	 ?></label>
 			</th>
 			<td class="forminp">
 				<fieldset>
 					<legend class="screen-reader-text"><span><?php echo wp_kses_post( $data['title'] ); ?></span></legend>
-					<select class="select <?php echo esc_attr( $data['class'] ); ?>" name="<?php echo esc_attr( $field_key ); ?>" id="<?php echo esc_attr( $field_key ); ?>" style="<?php echo esc_attr( $data['css'] ); ?>" <?php disabled( $data['disabled'], true ); ?> <?php echo $custom_attributes; // WPCS: XSS ok. ?>>
+					<select class="select <?php echo esc_attr( $data['class'] ); ?>" name="<?php echo esc_attr( $field_key ); ?>" id="<?php echo esc_attr( $field_key ); ?>" style="<?php echo esc_attr( $data['css'] ); ?>" <?php disabled( $data['disabled'], true ); ?> <?php echo $custom_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped	 ?>>
 						<?php foreach ( (array) $options as $option_key => $option_value ) : ?>
 							<?php if ( ! is_array( $option_value ) ) { ?>
 							<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( (string) $option_key, $save_value ); ?>><?php echo esc_attr( $option_value ); ?></option>
@@ -57,7 +57,7 @@ class WC_PMCS_Custom_Select_Field {
 							<?php } ?>
 						<?php endforeach; ?>
 					</select>
-					<?php echo $description; // WPCS: XSS ok. ?>
+					<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped	 ?>
 				</fieldset>
 			</td>
 		</tr>

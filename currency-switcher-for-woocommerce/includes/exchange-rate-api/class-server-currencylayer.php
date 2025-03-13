@@ -39,7 +39,7 @@ class PMSC_Server_Currencylayer extends PMCS_Exchange_Server_Abstract {
 		if ( ! get_option( 'pmcs_currencylayer_access_key' ) ) {
 			?>
 		<div class="notice notice-warning is-dismissible">
-			<p><?php _e( 'Please enter your access key', 'pmcs' ); ?></p>
+			<p><?php esc_html_e( 'Please enter your access key', 'pmcs' ); ?></p>
 		</div>
 			<?php
 		}

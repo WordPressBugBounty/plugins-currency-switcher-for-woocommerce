@@ -3,7 +3,7 @@ Contributors: PressMaximum, shrimp2t
 Donate link: #
 Tags: currency, switcher, currency switcher, currency converter, converter, woocommerce
 Requires at least: 4.5
-Tested up to: 6.0
+Tested up to: 6.7.2
 Stable tag: trunk
 License: GPL-2.0+
 License URI: https://opensource.org/licenses/GPL-2.0
@@ -69,6 +69,9 @@ Available options:
 
 
 == Changelog ==
+
+= 0.0.8 =
+* Fix CSRF issue
 
 = 0.0.2 =
 * Fix bugs

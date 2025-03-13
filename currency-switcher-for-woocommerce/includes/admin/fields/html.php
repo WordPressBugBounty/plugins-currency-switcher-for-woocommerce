@@ -23,16 +23,16 @@ class WC_PMCS_HTML_Field {
 			?>
 		<tr valign="top">
 			<th scope="row" class="titledesc">
-				<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
+				<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
 			</th>
 			<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 				<?php
 
 				if ( isset( $value['html'] ) ) {
-					echo '<div class="custom-html">' . $value['html'] . '</div>'; // WPCS: XSS ok.
+					echo '<div class="custom-html">' . $value['html'] . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
 
-				echo $description; // WPCS: XSS ok.
+				echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 				?>
 			</td>

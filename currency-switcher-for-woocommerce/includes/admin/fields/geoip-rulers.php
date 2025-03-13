@@ -81,13 +81,13 @@ class WC_PMCS_GeoIP_Rulers_Field {
 		?>
 		<tr class="tr <?php echo ( $wc_currency_code == $value['currency_code'] ? 'default-currency' : '' ); ?>">
 			<td>
-				<?php echo $text; // WPCS: XSS ok. ?>
+				<?php echo $text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped	 ?>
 			</td>
 			<td>
-				<select <?php echo $attrs; // WPCS: XSS ok.  ?> name="<?php echo $select_name; // WPCS: XSS ok. ?>" class="geoip-select wc-enhanced-select">
+				<select <?php echo $attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped	  ?> name="<?php echo $select_name; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped	 ?>" class="geoip-select wc-enhanced-select">
 					<?php
 					foreach ( $countries as $key => $val ) {
-						echo '<option value="' . esc_attr( $key ) . '"' . wc_selected( $key, $selected ) . '>' . esc_html( $val ) . '</option>'; // WPCS: XSS ok.
+						echo '<option value="' . esc_attr( $key ) . '"' . wc_selected( $key, $selected ) . '>' . esc_html( $val ) . '</option>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped	
 					}
 					?>
 				</select>

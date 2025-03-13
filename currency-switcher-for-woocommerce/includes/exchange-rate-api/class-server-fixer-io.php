@@ -39,7 +39,7 @@ class PMSC_Server_Fixer_IO extends PMCS_Exchange_Server_Abstract {
 		if ( ! get_option( 'pmcs_fixer_io_access_key' ) ) {
 			?>
 		<div class="notice notice-warning is-dismissible">
-			<p><?php _e( 'Please enter your access key', 'pmcs' ); ?></p>
+			<p><?php esc_html_e( 'Please enter your access key', 'pmcs' ); ?></p>
 		</div>
 			<?php
 		}
